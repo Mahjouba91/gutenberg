@@ -51,7 +51,9 @@ function NavigationMenu( {
 				return null;
 			}
 
-			return pages.map( ( { title, permalink_template, type, link, id  } ) => (
+			// Disable camelcase because of permalink_template.
+			/* eslint-disable camelcase */
+			return pages.map( ( { title, permalink_template, type, link, id } ) => (
 				[ 'core/navigation-menu-item', {
 					label: title.rendered,
 					destination: permalink_template,
@@ -62,6 +64,7 @@ function NavigationMenu( {
 					newTab: false,
 				} ]
 			) );
+			/* eslint-enable camelcase */
 		},
 		[ pages ]
 	);
